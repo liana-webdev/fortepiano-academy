@@ -26,7 +26,8 @@ a:hover{text-decoration:underline}
   -webkit-backdrop-filter: blur(18px);
   box-shadow:0 10px 40px rgba(0,0,0,.35);
 }
-.nav{position:sticky;top:0;z-index:40}
+.nav {
+  position:sticky;top:0;z-index:40}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px}
 .brand-dot{width:18px;height:18px;border-radius:6px;background:linear-gradient(180deg,var(--red),#9d0f2f);box-shadow:0 0 20px rgba(236,26,76,.4)}
@@ -71,10 +72,25 @@ input,textarea{width:100%;background:#1a1a1a;border:1px solid rgba(255,255,255,.
   0%{text-shadow:0 0 8px rgba(236,26,76,.28),0 0 16px rgba(236,26,76,.35)}
   100%{text-shadow:0 0 12px rgba(236,26,76,.45),0 0 30px rgba(236,26,76,.6)}
 }
-.shimmer::before{
-  content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;
-  background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.12) 50%,transparent 100%);
-  transform:translateX(-130%) skewX(-20deg);animation:shimmer 6s infinite
+.card.shimmer {
+  position: relative;   /* contain the ::before inside the card */
+  overflow: hidden;     /* clip the glare so it doesn’t spill out */
+}
+
+.card.shimmer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 100%
+  );
+  transform: translateX(-130%) skewX(-20deg);
+  animation: shimmer 6s infinite;
 }
 @keyframes shimmer{0%{transform:translateX(-130%) skewX(-20deg)}100%{transform:translateX(130%) skewX(-20deg)}}
 .float{animation:float 7s ease-in-out infinite}
